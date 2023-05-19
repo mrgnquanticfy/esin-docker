@@ -1,14 +1,13 @@
-# je commence par télécharge alpine: une distribution linux très très légère
-FROM alpine:3.14  
+# je commence par télécharger alpine: une distribution linux très très légère
+FROM php:8.1.19-fpm-alpine3.18
 
-# installer mysql
-RUN apk add --no-cache php
+# installer des extensions de php (pdo, mysql)
+RUN docker-php-ext-install mysqli pdo pdo_mysql
 
-COPY index.php ./
+WORKDIR /app
 
 # mon programme principal sera d'executer un serveur php
 CMD ["php", "-S", "0.0.0.0:9999"]
-
 
 # nos commandes principales : 
 # - `  docker build -t nom_de_votre_image . `

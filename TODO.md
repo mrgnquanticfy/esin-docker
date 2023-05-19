@@ -43,3 +43,16 @@ qui contient des fichiers de base : 
 - index.php
 - un répertoire de lien avec ma base de données
 - un répertoire de composants
+
+Une structure des fichiers : 
+```
+/app                    # contient mes fichiers PHP, mon "application"
+  /components               # mes briques applicatives
+  /public                   # mon code front, mes fichiers publics
+  index.php
+/docker                 # contient la config et la data de Docker
+  /php
+  /mysql
+  /apache
+docker-compose.yml
+```

@@ -4,6 +4,11 @@ services:
   php:
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: ./docker/php/Dockerfile
     ports:
       - 9999:9999
+    volumes:
+      - type: bind
+        source: ./app
+        target: /app
+        consistency: delegated # par défaut
