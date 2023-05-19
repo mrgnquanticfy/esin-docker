@@ -61,3 +61,21 @@ docker run \
     esindocker \
     /bin/sh;
 ```     
+
+## relier le réseau
+
+pour laisser mon ordinateur communiquer avec mon container, 
+je dois **publier** des ports de mon container 
+
+Trois options : 
+- ajouter EXPOSE dans mon Dockerfile
+- ajoute l'option "--publish" quand je démarre mon container
+- utiliser docker-compose
+
+## docker compose
+
+permet de gérer plusieurs containers en simultané 
+
+une commande importante : `docker compose up`
+
+un fichier important : `docker-compose.yml`

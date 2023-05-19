@@ -1,13 +1,13 @@
-# je commence par télécharge alpine
+# je commence par télécharge alpine: une distribution linux très très légère
 FROM alpine:3.14  
 
-# commande intermédiaire de génération de mon image : installer mysql
+# installer mysql
 RUN apk add --no-cache php
 
 COPY index.php ./
- 
-# mon programme principal sera mysql
-CMD ["php", "index.php"]
+
+# mon programme principal sera d'executer un serveur php
+CMD ["php", "-S", "0.0.0.0:9999"]
 
 
 # nos commandes principales : 
