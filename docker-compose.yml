@@ -6,9 +6,23 @@ services:
       context: .
       dockerfile: ./docker/php/Dockerfile
     ports:
-      - 9999:9999
+      - 9999:9999 # 9999 est par défaut mais le 9999 je peux mettre ce que je veux (courage)
     volumes:
       - type: bind
         source: ./app
         target: /app
         consistency: delegated # par défaut
+    env_file: # permet d'injecter des variables d'environnement dans mon container
+      - .env # faut créer ce fichier avant de `docker compose up`
+  mysql:
+    image: mysql:8.0
+    restart: on-failure
+    ports:
+      - 13306:3306 # 3306 est par défaut mais le 13306 je peux mettre ce que je veux
+    volumes:
+      - type: bind
+        source: ./docker/mysql/data # je choisis le dossier comme je veux
+        target: /var/lib/mysql # par défaut
+      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/host.my.cnf # je peux choisir la source
+    env_file: # permet d'injecter des variables d'environnement dans mon container
+      - .env # faut créer ce fichier avant de `docker compose up`

@@ -1,15 +1,23 @@
 <?php
 
 class BDD {
-	private $host = 'localhost';
-	private $dbname = 'esin';
-	private $user = 'esin';
-	private $pwd = '€s1N';
+	private $host;
+	private $dbname;
+	private $user;
+	private $pwd;
 
 	protected $co = false;
 
 	public function __construct()
 	{
+		// à l'instantiation
+		// je récupère mes infos de connexion depuis
+		// mes variables d'environnement
+		$this->host = $_ENV["MYSQL_HOST"];
+		$this->dbname = $_ENV["MYSQL_DATABASE"];
+		$this->user = $_ENV["MYSQL_USER"];
+		$this->pwd = $_ENV["MYSQL_PASSWORD"];
+
 		if($this->co == false){
 			// Essaie de se connecter à la base
 			try {
