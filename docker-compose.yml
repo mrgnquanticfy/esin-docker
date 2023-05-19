@@ -26,3 +26,10 @@ services:
       - ./docker/mysql/my.cnf:/etc/mysql/conf.d/host.my.cnf # je peux choisir la source
     env_file: # permet d'injecter des variables d'environnement dans mon container
       - .env # faut créer ce fichier avant de `docker compose up`
+  phpmyadmin:
+      image: phpmyadmin
+      restart: always
+      ports:
+        - 8080:80
+      environment:
+        - PMA_ARBITRARY=1
